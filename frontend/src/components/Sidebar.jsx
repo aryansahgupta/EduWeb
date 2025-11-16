@@ -29,3 +29,33 @@ export const Sidebar = () => {
         <div className="flex items-center space-x-2">
           <Package className="w-8 h-8 text-blue-500" />
           <h1 className="text-xl font-bold">IT Asset Manager</h1>
+        </div>
+      </div>
+
+      <nav className="flex-1 px-4 py-6 space-y-2">
+        {navItems.map((item) => {
+          const isActive = location.pathname === item.path;
+
+          return (
+            <Link
+              key={item.path}
+              to={item.path}
+              className={`flex items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-200 ${
+                isActive
+                  ? 'bg-blue-600 text-white shadow-md'
+                  : 'text-gray-300 hover:bg-gray-800 hover:text-white'
+              }`}
+            >
+              {item.icon}
+              <span className="font-medium">{item.name}</span>
+            </Link>
+          );
+        })}
+      </nav>
+
+      <div className="p-4 border-t border-gray-800">
+        <p className="text-xs text-gray-500 text-center">v1.0.0</p>
+      </div>
+    </aside>
+  );
+};
